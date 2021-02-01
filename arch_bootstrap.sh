@@ -24,11 +24,15 @@ makepkg -si
 
 # Load yay packages
 dialog --infobox "Download yay packages..." 5 35
+
+## Luke's mail autoconfig
 yay -S --noconfirm mutt-wizard >/dev/null 2>&1
 
-# Font that work well with oh-my-zsh
+## Font that work well with oh-my-zsh
 yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k >/dev/null 2>&1
 
+## p10k theme
+yay -S --noconfirm zsh-theme-powerlevel10k-git >/dev/null 2>&1
 
 # clone suckless
 dialog --infobox "Clone suckless..." 5 35
@@ -66,7 +70,9 @@ ln -s "$XDG_CONFIG_HOME"/dotfiles/.xserverrc "$XDG_CONFIG_HOME"/X11/xserverrc
 # ZSH
 [ ! -d "$XDG_CONFIG_HOME"/zsh ] && mkdir "$XDG_CONFIG_HOME"/zsh
 sudo ln -s "$XDG_CONFIG_HOME"/dotfiles/.zshenv /etc/zsh/zshenv
-ln -s "$XDG_CONFIG_HOME"/dotfiles/.zlogin "$XDG_CONFIG_HOME"/zsh/.zlogin
+ln -s "$XDG_CONFIG_HOME"/dotfiles/.zlogin "$XDG_CONFIG_HOME"/zsh/
+ln -s "$XDG_CONFIG_HOME"/dotfiles/.p10k.zsh "$XDG_CONFIG_HOME"/zsh/
+ln -s "$XDG_CONFIG_HOME"/dotfiles/.zshrc "$XDG_CONFIG_HOME"/zsh/
 
 # xbindkeys
 [ ! -d "$XDG_CONFIG_HOME"/xbindkeys ] && mkdir "$XDG_CONFIG_HOME"/xbindkeys
@@ -81,6 +87,9 @@ ln -s "$XDG_CONFIG_HOME"/dotfiles/.vimrc "$XDG_CONFIG_HOME"/vim/vimrc
 [ ! -d "$XDG_CONFIG_HOME"/abook ] && mkdir "$XDG_CONFIG_HOME"/abook
 [ ! -d "$XDG_DATA_HOME" ] && mkdir -p "$XDG_DATA_HOME"
 
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm ~/.zshrc
 
 # Setup Vundle
 
@@ -111,8 +120,8 @@ dialog --infobox "Create basic home folders..." 5 35
 
 # set wallpapers
 wget -O "$XDG_CONFIG_HOME"/wall.jpg https://images.wallpaperscraft.com/image/temple_mountains_lake_127937_1920x1080.jpg
-[ ! -d "$XDG_CONFIG_HOME"/feh ] && mkdir "$XDG_CONFIG_HOME"/feh 
 feh --bg-scale "$XDG_CONFIG_HOME"/wall.jpg
+[ ! -d "$XDG_CONFIG_HOME"/feh ] && mkdir "$XDG_CONFIG_HOME"/feh 
 mv "$HOME"/.fehbg "$HOME"/.config/feh/fehbg
 
 # Change shell to zsh
