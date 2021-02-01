@@ -76,7 +76,7 @@ ln -s "$XDG_CONFIG_HOME"/dotfiles/.zshrc "$XDG_CONFIG_HOME"/zsh/
 
 ## xbindkeys
 [ ! -d "$XDG_CONFIG_HOME"/xbindkeys ] && mkdir "$XDG_CONFIG_HOME"/xbindkeys
-ln -s "$XDG_CONFIG_HOME"/dotfiles/.xbindkeys "$XDG_CONFIG_HOME"/xbindkeys/config
+ln -s "$XDG_CONFIG_HOME"/dotfiles/.xbindkeysrc "$XDG_CONFIG_HOME"/xbindkeys/config
 
 ## vim
 
