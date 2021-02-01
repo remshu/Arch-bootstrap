@@ -57,39 +57,36 @@ git clone https://github.com/ArtemShchelkunov/dotfiles ~/.config/dotfiles >/dev/
 
 # source szhenv to get access to path variables
 source ~/.config/dotfiles/.zshenv
-
 # Link dotfiles
-# X11 (xinit, not startx)
+
 
 dialog --infobox "Creating softlincs from dotfiles to configs dirs..." 5 35
 
+## X11 (xinit, not startx)
 [ ! -d "$XDG_CONFIG_HOME"/X11 ] && mkdir "$XDG_CONFIG_HOME"/X11
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.xinitrc "$XDG_CONFIG_HOME"/X11/xinitrc
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.xserverrc "$XDG_CONFIG_HOME"/X11/xserverrc
 
-# ZSH
+## ZSH
 [ ! -d "$XDG_CONFIG_HOME"/zsh ] && mkdir "$XDG_CONFIG_HOME"/zsh
 sudo ln -s "$XDG_CONFIG_HOME"/dotfiles/.zshenv /etc/zsh/zshenv
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.zlogin "$XDG_CONFIG_HOME"/zsh/
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.p10k.zsh "$XDG_CONFIG_HOME"/zsh/
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.zshrc "$XDG_CONFIG_HOME"/zsh/
 
-# xbindkeys
+## xbindkeys
 [ ! -d "$XDG_CONFIG_HOME"/xbindkeys ] && mkdir "$XDG_CONFIG_HOME"/xbindkeys
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.xbindkeys "$XDG_CONFIG_HOME"/xbindkeys/config
 
-# vim
+## vim
 
 [ ! -d "$XDG_CONFIG_HOME"/vim ] && mkdir "$XDG_CONFIG_HOME"/vim
 ln -s "$XDG_CONFIG_HOME"/dotfiles/.vimrc "$XDG_CONFIG_HOME"/vim/vimrc
 
-# abook
+## abook
 [ ! -d "$XDG_CONFIG_HOME"/abook ] && mkdir "$XDG_CONFIG_HOME"/abook
 [ ! -d "$XDG_DATA_HOME" ] && mkdir -p "$XDG_DATA_HOME"
 
-# oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm ~/.zshrc
 
 # Setup Vundle
 
@@ -124,5 +121,10 @@ feh --bg-scale "$XDG_CONFIG_HOME"/wall.jpg
 [ ! -d "$XDG_CONFIG_HOME"/feh ] && mkdir "$XDG_CONFIG_HOME"/feh 
 mv "$HOME"/.fehbg "$HOME"/.config/feh/fehbg
 
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1 &
+rm -r ~/.zsh* ~/.vim* ~/.bash*
 # Change shell to zsh
+echo "Now you may be asked for password. It's needed to end the configuration process. After that computer will be rebooted"
 chsh -s /bin/zsh
+sudo reboot now
