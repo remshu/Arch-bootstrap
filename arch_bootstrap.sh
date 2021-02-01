@@ -123,7 +123,7 @@ mv "$HOME"/.fehbg "$HOME"/.config/feh/fehbg
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1 &
-rm -r ~/.zsh* ~/.vim* ~/.bash*
+sudo rm -r ~/.zsh* ~/.vim* ~/.bash*
 # Change shell to zsh
 echo "Now you may be asked for password. It's needed to end the configuration process. After that computer will be rebooted"
 chsh -s /bin/zsh
