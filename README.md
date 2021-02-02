@@ -1,5 +1,4 @@
 # Arch-bootstrap
-Deployment and initial system configuration
 
 This script was made for basic programs deployment and initial system configuration.
 
