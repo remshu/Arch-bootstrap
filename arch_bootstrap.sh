@@ -116,15 +116,12 @@ vim +PluginInstall +qall
 [ ! -d ~/vids ] && [ ! -d ~/Videos ] && mkdir ~/vids
 
 # set wallpapers
-wget -O "$XDG_CONFIG_HOME"/wall.jpg https://images.wallpaperscraft.com/image/temple_mountains_lake_127937_1920x1080.jpg
-feh --bg-scale $HOME/.config/wall.jpg
+wget -O "$XDG_CONFIG_HOME"/wall.jpg https://images.wallpaperscraft.com/image/temple_mountains_lake_127937_1920x1080.jpg && feh --bg-scale "$XDG_CONFIG_HOME"/wall.jpg
 [ ! -d "$XDG_CONFIG_HOME"/feh ] && mkdir "$XDG_CONFIG_HOME"/feh 
-mv "$HOME"/.fehbg "$HOME"/.config/feh/fehbg
+mv "$HOME"/.fehbg "$XDG_CONFIG_HOME"/feh/fehbg
 
 # oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1 &
-mv ~/.oh-my-zsh "$XDG_CONFIG_HOME"/zsh/oh-my-zsh
-sudo rm -r ~/.zsh* ~/.vim* ~/.bash*
+(sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1 && mv ~/.oh-my-zsh "$XDG_CONFIG_HOME"/zsh/oh-my-zsh) &
 # Change shell to zsh
 echo "Now you may be asked for password. It's needed to end the configuration process. After that computer will be rebooted"
 chsh -s /bin/zsh
