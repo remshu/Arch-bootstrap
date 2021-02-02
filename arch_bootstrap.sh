@@ -116,9 +116,8 @@ vim +PluginInstall +qall
 [ ! -d ~/vids ] && [ ! -d ~/Videos ] && mkdir ~/vids
 
 # set wallpapers
-wget -O "$XDG_CONFIG_HOME"/wall.jpg https://images.wallpaperscraft.com/image/temple_mountains_lake_127937_1920x1080.jpg && feh --bg-scale "$XDG_CONFIG_HOME"/wall.jpg
+wget -O "$XDG_CONFIG_HOME"/wall.jpg https://images.wallpaperscraft.com/image/temple_mountains_lake_127937_1920x1080.jpg
 [ ! -d "$XDG_CONFIG_HOME"/feh ] && mkdir "$XDG_CONFIG_HOME"/feh 
-mv "$HOME"/.fehbg "$XDG_CONFIG_HOME"/feh/fehbg
 
 # oh-my-zsh
 (sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1 && mv ~/.oh-my-zsh "$XDG_CONFIG_HOME"/zsh/oh-my-zsh) &
